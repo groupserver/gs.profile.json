@@ -15,11 +15,18 @@
 from __future__ import absolute_import, unicode_literals
 from collections import OrderedDict
 from json import dumps as dump_json
+from zope.cachedescriptors.property import Lazy
+from gs.profile.email.base.interfaces import IGSEmailUser
 from gs.profile.view.page import GSProfileView
 
 
 class JSONView(GSProfileView):
     'The JSON view of a profile'
+
+    @Lazy
+    def emailUser(self):
+        retval = IGSEmailUser(self.user)
+        return retval
 
     def __call__(self):
         outDict = OrderedDict()
@@ -28,6 +35,8 @@ class JSONView(GSProfileView):
         for propId in self.props.keys():
             val = self.get_property(propId)
             outDict[propId] = val
+
+        outDict['email'] = self.emailUser.get_verified_addresses()
 
         self.request.response.setHeader(b'Content-Type',
                                         b'application/json')
