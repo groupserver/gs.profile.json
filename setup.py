@@ -52,6 +52,10 @@ setup(
     zip_safe=False,
     install_requires=[
         'setuptools',
+        'zope.browserpage',
+        'zope.cachedescriptors',
+        'gs.profile.email.base',
+        'gs.profile.view.page',
     ],
     entry_points="""
     # -*- Entry points: -*-
