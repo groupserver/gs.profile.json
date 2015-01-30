@@ -13,6 +13,7 @@
 #
 ############################################################################
 from __future__ import absolute_import, unicode_literals
+from collections import OrderedDict
 from json import dumps as dump_json
 from gs.profile.view.page import GSProfileView
 
@@ -21,9 +22,14 @@ class JSONView(GSProfileView):
     'The JSON view of a profile'
 
     def __call__(self):
-        props = {'id': self.userInfo.id}
+        outDict = OrderedDict()
+        outDict['id'] = self.userInfo.id
+
+        for propId in self.props.keys():
+            val = self.get_property(propId)
+            outDict[propId] = val
 
         self.request.response.setHeader(b'Content-Type',
                                         b'application/json')
-        retval = dump_json(props)
+        retval = dump_json(outDict)
         return retval
