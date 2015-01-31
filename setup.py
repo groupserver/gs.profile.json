@@ -55,7 +55,7 @@ setup(
         'zope.browserpage',
         'zope.cachedescriptors',
         'gs.profile.email.base',
-        'gs.profile.view.page',
+        'gs.profile.view',
     ],
     entry_points="""
     # -*- Entry points: -*-
