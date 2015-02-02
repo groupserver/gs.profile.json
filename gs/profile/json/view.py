@@ -31,7 +31,7 @@ class JSONView(GSProfileView):
     def __call__(self):
         outDict = OrderedDict()
         outDict['id'] = self.userInfo.id
-
+        # FIXME: Ensure we have the right permission to do this.
         for propId in self.props.keys():
             val = self.get_property(propId)
             outDict[propId] = val
