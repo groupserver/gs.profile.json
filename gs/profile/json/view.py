@@ -32,7 +32,7 @@ class JSONView(GSProfileView):
 
     def is_admin(self, group):
         roles = self.request.AUTHENTICATED_USER.getRolesInContext(group)
-        retval = 'GroupAdmin' in roles
+        retval = ('GroupAdmin' in roles) or ('DivisionAdmin' in roles)
         return retval
 
     @Lazy
@@ -53,6 +53,8 @@ class JSONView(GSProfileView):
 
         if self.userOrGroupAdmin:
             outDict['email'] = self.emailUser.get_verified_addresses()
+        else:
+            outDict['email'] = []
 
         self.request.response.setHeader(b'Content-Type',
                                         b'application/json')
