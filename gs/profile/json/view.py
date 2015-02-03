@@ -14,7 +14,9 @@
 ############################################################################
 from __future__ import absolute_import, unicode_literals
 from collections import OrderedDict
+from functools import reduce
 from json import dumps as dump_json
+from operator import or_
 from zope.cachedescriptors.property import Lazy
 from gs.profile.email.base.interfaces import IGSEmailUser
 from gs.profile.view.page import GSProfileView
@@ -28,15 +30,29 @@ class JSONView(GSProfileView):
         retval = IGSEmailUser(self.user)
         return retval
 
+    def is_admin(self, group):
+        roles = self.request.AUTHENTICATED_USER.getRolesInContext(group)
+        retval = 'GroupAdmin' in roles
+        return retval
+
+    @Lazy
+    def userOrGroupAdmin(self):
+        retval = ((self.loggedInUserInfo.id == self.userInfo.id) or
+                  reduce(or_, [self.is_admin(g.groupObj)
+                               for g in self.groupMembership()], False))
+        return retval
+
     def __call__(self):
         outDict = OrderedDict()
         outDict['id'] = self.userInfo.id
-        # FIXME: Ensure we have the right permission to do this.
-        for propId in self.props.keys():
-            val = self.get_property(propId)
-            outDict[propId] = val
 
-        outDict['email'] = self.emailUser.get_verified_addresses()
+        if (not self.loggedInUserInfo.anonymous):
+            for propId in self.props.keys():
+                val = self.get_property(propId)
+                outDict[propId] = val
+
+        if self.userOrGroupAdmin:
+            outDict['email'] = self.emailUser.get_verified_addresses()
 
         self.request.response.setHeader(b'Content-Type',
                                         b'application/json')
