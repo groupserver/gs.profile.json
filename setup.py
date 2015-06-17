@@ -17,6 +17,7 @@ import os
 from setuptools import setup, find_packages
 from version import get_version
 
+name = 'gs.profile.json'
 version = get_version()
 
 with codecs.open('README.rst', encoding='utf-8') as f:
@@ -26,7 +27,7 @@ with codecs.open(os.path.join("docs", "HISTORY.rst"),
     long_description += '\n' + f.read()
 
 setup(
-    name='gs.profile.json',
+    name=name,
     version=version,
     description="The JSON view of a GroupServer profile",
     long_description=long_description,
@@ -44,10 +45,11 @@ setup(
     keywords='groupserver, member, profile, user, json',
     author='Michael JasonSmith',
     author_email='mpj17@onlinegroups.net',
-    url='https://github.com/groupserver/gs.profile.json',
+    url='https://github.com/groupserver/{0}'.format(name),
     license='ZPL 2.1',
     packages=find_packages(exclude=['ez_setup']),
-    namespace_packages=['gs', 'gs.profile', ],
+    namespace_packages=['.'.join(name.split('.')[:i])
+                        for i in range(1, len(name.split('.')))],
     include_package_data=True,
     zip_safe=False,
     install_requires=[

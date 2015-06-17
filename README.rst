@@ -19,22 +19,25 @@ A JSON view of the GroupServer profile of a person
 Introduction
 ============
 
-This product provides a view of the profile of a GroupServer_
-group member in JSON_ format. It is mostly used by the
-``gs.group.member.export`` system to produce a CSV of profile
-information for the group members.
+This product provides a view of a profile of a GroupServer_ group
+member in JSON_ format. It is used by the `member export`_
+system, and requires the person retrieving the information to be
+logged in.
 
-JSON
-====
+Member export
+=============
 
-The JSON view of the profile is implemented as the page
-``profile.json`` in the context of a profile.
+The JSON view of the profile, ``profile.json`` in the *profile*
+context, returns the profile information to people who are logged
+in. It is used by the ``gs.group.member.export`` system to
+produce a CSV of profile information for the group members.
 
 Resources
 =========
 
 - Code repository: https://github.com/groupserver/gs.profile.json
-- Questions and comments to http://groupserver.org/groups/development
+- Questions and comments to
+  http://groupserver.org/groups/development
 - Report bugs at https://redmine.iopen.net/projects/groupserver
 
 .. _GroupServer: http://groupserver.org/
