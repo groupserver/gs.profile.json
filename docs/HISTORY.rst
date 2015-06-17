@@ -1,9 +1,15 @@
 Changelog
 =========
 
-1.0.0 (2015-02-xx)
+1.1.0 (2015-06-17)
 ------------------
 
-* Initial version
+* Adding the ``utils``
+
+1.0.0 (2015-02-03)
+------------------
+
+Initial version. Prior to the creation of this product the
+profile information was only available as HTML.
 
 ..  LocalWords:  Changelog GitHub
