@@ -1,13 +1,9 @@
-===================
-``gs.profile.json``
-===================
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-A JSON view of the GroupServer profile of a person
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+:mod:`gs.profile.json` Documentation
+=====================================
 
 :Author: `Michael JasonSmith`_
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2015-01-30
+:Date: 2015-06-18
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 4.0 International License`_
@@ -16,13 +12,26 @@ A JSON view of the GroupServer profile of a person
 ..  _Creative Commons Attribution-Share Alike 4.0 International License:
     http://creativecommons.org/licenses/by-sa/4.0/
 
-Introduction
-============
-
 This product provides a view of a profile of a GroupServer_ group
-member in JSON format. It is used by the *member export* system,
-and requires the person retrieving the information to be logged
-in.
+member in JSON format, which is used by the *member export*
+system. This product also provides some utilities that are used
+to format user-objects so they can be formatted into JSON object.
+
+Contents:
+
+.. toctree::
+   :maxdepth: 2
+   
+   page
+   api
+   HISTORY
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
 
 Resources
 =========
@@ -38,5 +47,3 @@ Resources
 .. _GroupServer.org: http://groupserver.org/
 .. _OnlineGroups.Net: https://onlinegroups.net
 .. _Michael JasonSmith: http://groupserver.org/p/mpj17
-
-..  LocalWords:  nz GSProfile TODO redirector LocalWords JSON json CSV

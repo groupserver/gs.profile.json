@@ -5,6 +5,11 @@ Changelog
 ------------------
 
 * Adding the ``utils``
+* Adding the Sphinx documentation_
+
+.. _documentation:
+   http://groupserver.readthedocs.org/projects/gsprofilejson
+
 
 1.0.0 (2015-02-03)
 ------------------
