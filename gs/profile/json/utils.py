@@ -14,6 +14,7 @@
 #
 ############################################################################
 from __future__ import absolute_import, unicode_literals
+from collections import OrderedDict
 from gs.group.member.base import user_member_of_group
 from gs.profile.email.base import EmailUser
 
@@ -23,12 +24,13 @@ def email_info(siteInfo, userInfo):
     allEmail = eu.get_addresses()
     preferred = eu.get_delivery_addresses()
     unverified = eu.get_unverified_addresses()
-    other = list(set(allEmail) - set(preferred) - set(unverified))
+    other = list((set(allEmail) - set(preferred)) - set(unverified))
 
-    retval = {'all': allEmail,
-              'preferred': preferred,
-              'other': other,
-              'unverified': unverified, }
+    retval = OrderedDict()
+    retval['all'] = allEmail
+    retval['preferred'] = preferred
+    retval['other'] = other
+    retval['unverified'] = unverified
     return retval
 
 #: The types of folder that can be a group
@@ -41,11 +43,13 @@ def groups(siteInfo, userInfo):
               if folder.getProperty('is_group', False)]
     retval = [group.getId() for group in groups
               if user_member_of_group(userInfo, group)]
+    retval.sort()
     return retval
 
 
 def user_info(siteInfo, userInfo):
-    retval = {'id': userInfo.id,
-              'name': userInfo.name,
-              'url': ''.join((siteInfo.url, userInfo.url)), }
+    retval = OrderedDict()
+    retval['id'] = userInfo.id,
+    retval['name'] = userInfo.name,
+    retval['url'] = ''.join((siteInfo.url, userInfo.url))
     return retval
