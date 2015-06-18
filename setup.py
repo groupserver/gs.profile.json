@@ -59,6 +59,7 @@ setup(
         'gs.profile.email.base',
         'gs.profile.view',
     ],
+    extras_require={'docs': ['Sphinx'], },
     entry_points="""
     # -*- Entry points: -*-
     """,)
