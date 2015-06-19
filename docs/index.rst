@@ -10,7 +10,7 @@
   by `OnlineGroups.net`_.
 
 ..  _Creative Commons Attribution-Share Alike 4.0 International License:
-    http://creativecommons.org/licenses/by-sa/4.0/
+    https://creativecommons.org/licenses/by-sa/4.0/
 
 This product provides a view of a profile of a GroupServer_ group
 member in JSON format, which is used by the *member export*
