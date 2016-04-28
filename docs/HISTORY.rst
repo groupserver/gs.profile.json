@@ -8,7 +8,7 @@ Changelog
 * Adding the Sphinx documentation_
 
 .. _documentation:
-   http://groupserver.readthedocs.org/projects/gsprofilejson
+   http://groupserver.readthedocs.io/projects/gsprofilejson
 
 
 1.0.0 (2015-02-03)
