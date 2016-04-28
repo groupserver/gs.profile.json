@@ -28,7 +28,7 @@ Resources
 =========
 
 - Documentation:
-  http://groupserver.readthedocs.org/projects/gsprofilejson
+  http://groupserver.readthedocs.io/projects/gsprofilejson
 - Code repository: https://github.com/groupserver/gs.profile.json
 - Questions and comments to
   http://groupserver.org/groups/development
